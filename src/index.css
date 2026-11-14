@@ -1,0 +1,579 @@
+:root {
+  --green: #123f35;
+  --green-deep: #0b3029;
+  --green-mid: #1e6653;
+  --green-soft: #eaf2eb;
+  --gold: #78a184;
+  --cream: #faf8f2;
+  --ink: #20352f;
+  --muted: #6a7972;
+  --line: #e6e8df;
+  --white: #fff;
+  --serif: "Playfair Display", Georgia, serif;
+  --sans: "DM Sans", "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+body { margin: 0; color: var(--ink); background: var(--white); font-family: var(--sans); line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+button, input { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+img { display: block; max-width: 100%; }
+.container { width: min(1160px, calc(100% - 48px)); margin: 0 auto; }
+
+.announcement {
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 16px;
+  color: #f8f4e8;
+  background: var(--green-deep);
+  font-size: 12px;
+  letter-spacing: .025em;
+  text-align: center;
+}
+.announcement strong { color: #b8d6bd; font-weight: 600; }
+.announcement a { color: #b8d6bd; font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+.site-header {
+  position: sticky;
+  z-index: 20;
+  top: 0;
+  background: rgba(255,255,255,.96);
+  border-bottom: 1px solid rgba(32,53,47,.08);
+  backdrop-filter: blur(14px);
+}
+.header-inner { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+.brand { display: flex; align-items: center; gap: 11px; flex-shrink: 0; }
+.brand-mark {
+  width: 43px; height: 43px; display: grid; place-items: center;
+  color: #dce9dd; background: var(--green); border-radius: 14px 14px 14px 4px;
+  font-family: var(--serif); font-size: 23px;
+}
+.brand-copy { display: flex; flex-direction: column; line-height: 1.15; }
+.brand-copy strong { font-family: var(--serif); font-size: 19px; letter-spacing: -.02em; color: var(--green); }
+.brand-copy span { margin-top: 4px; color: var(--muted); font-size: 10px; letter-spacing: .13em; text-transform: uppercase; }
+.main-nav { display: flex; align-items: center; gap: 31px; }
+.main-nav a { color: #43544e; font-size: 13px; font-weight: 600; transition: color .2s; }
+.main-nav a:hover { color: var(--green-mid); }
+.header-actions { display: flex; align-items: center; gap: 11px; }
+.header-phone { color: var(--green); font-size: 12px; font-weight: 700; }
+.menu-toggle { display: none; border: 0; background: transparent; color: var(--green); font-size: 26px; cursor: pointer; }
+
+.button {
+  min-height: 46px; display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  padding: 0 21px; border: 1px solid transparent; border-radius: 5px;
+  font-size: 12px; font-weight: 700; letter-spacing: .025em; cursor: pointer;
+  transition: background .2s, color .2s, transform .2s, border-color .2s;
+}
+.button:hover { transform: translateY(-2px); }
+.button-primary { color: white; background: var(--green); }
+.button-primary:hover { background: var(--green-mid); }
+.button-outline { color: var(--green); background: transparent; border-color: rgba(18,63,53,.32); }
+.button-outline:hover { background: var(--green-soft); border-color: var(--green); }
+.button-light { color: var(--green); background: white; }
+.button-light:hover { background: var(--green-soft); }
+.button-arrow { font-size: 17px; line-height: 1; }
+
+.hero {
+  position: relative; overflow: hidden; min-height: 610px; padding: 75px 0 70px;
+  color: white; background: var(--green);
+}
+.hero::before, .hero::after { position: absolute; content: ""; pointer-events: none; }
+.hero::before {
+  width: 700px; height: 700px; right: -230px; top: -310px; border: 1px solid rgba(184,214,189,.13);
+  border-radius: 50%; box-shadow: 0 0 0 50px rgba(184,214,189,.025), 0 0 0 100px rgba(184,214,189,.025), 0 0 0 150px rgba(184,214,189,.02);
+}
+.hero::after { width: 440px; height: 440px; left: -280px; bottom: -320px; border-radius: 50%; background: rgba(120,161,132,.1); }
+.hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.02fr .98fr; gap: 68px; align-items: center; }
+.hero-copy { max-width: 560px; }
+.eyebrow { display: inline-flex; align-items: center; gap: 9px; margin-bottom: 19px; color: var(--gold); font-size: 10px; font-weight: 700; letter-spacing: .17em; text-transform: uppercase; }
+.eyebrow::before { content: ""; width: 25px; height: 1px; background: currentColor; }
+.hero h1 { max-width: 590px; margin: 0; font-family: var(--serif); font-size: clamp(42px, 5.2vw, 65px); font-weight: 500; line-height: 1.1; letter-spacing: -.04em; }
+.hero h1 em { color: #b8d6bd; font-style: normal; }
+.hero-copy > p { max-width: 520px; margin: 22px 0 28px; color: rgba(255,255,255,.76); font-size: 15px; line-height: 1.8; }
+.hero-copy > .hero-tagline { margin: 13px 0 0; color: #b8d6bd; font-family: var(--serif); font-size: 19px; font-style: italic; }
+.hero-copy > .hero-intro { margin: 12px 0 25px; font-size: 13px; line-height: 1.8; }
+.hero-buttons { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-note { display: flex; align-items: center; gap: 10px; margin-top: 25px; color: rgba(255,255,255,.77); font-size: 11px; }
+.avatar-stack { display: flex; padding-left: 7px; }
+.avatar-stack span { width: 27px; height: 27px; margin-left: -7px; display: grid; place-items: center; border: 2px solid var(--green); border-radius: 50%; color: var(--green); background: #dce9dd; font-size: 9px; font-weight: 700; }
+.avatar-stack span:nth-child(2) { background: #c9d8c5; }
+.avatar-stack span:nth-child(3) { background: #dce9dd; }
+.hero-visual { position: relative; min-height: 430px; perspective: 1100px; transform-style: preserve-3d; }
+.hero-spiritual-glow { position: absolute; z-index: 2; top: 27%; right: -2px; width: 104px; color: #d9c58d; opacity: .8; filter: drop-shadow(0 0 12px rgba(217,197,141,.3)); pointer-events: none; animation: hero-glow-float 5s ease-in-out infinite; }
+.hero-spiritual-glow svg { display: block; width: 100%; overflow: visible; }
+.hero-glow-orbit { fill: none; stroke: rgba(217,197,141,.45); stroke-width: .8; stroke-dasharray: 2 5; transform-box: fill-box; transform-origin: center; animation: hero-orbit-turn 28s linear infinite; }
+.hero-glow-crescent { fill: rgba(217,197,141,.9); }
+.hero-glow-star { fill: #f4e7bd; transform-box: fill-box; transform-origin: center; animation: hero-star-shimmer 2.8s ease-in-out infinite; }
+.hero-glow-dot { fill: #f4e7bd; animation: hero-star-shimmer 2.2s ease-in-out infinite; }
+.hero-glow-dot-late { animation-delay: 1s; }
+@keyframes hero-glow-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+@keyframes hero-orbit-turn { to { transform: rotate(360deg); } }
+@keyframes hero-star-shimmer { 0%, 100% { opacity: .45; transform: scale(.88); } 50% { opacity: 1; transform: scale(1.12); } }
+.hero-image {
+  position: absolute; inset: 0 28px 25px 28px; overflow: hidden;
+  border: 8px solid rgba(255,255,255,.12); border-radius: 180px 180px 12px 12px;
+  background: linear-gradient(150deg, #a9c4ae, #526d60);
+  box-shadow: 22px 28px 55px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.3);
+  transform: rotateY(-5deg) rotateX(2deg);
+  transform-style: preserve-3d;
+  transition: transform .45s ease, box-shadow .45s ease;
+}
+.hero-visual:hover .hero-image { transform: rotateY(-2deg) rotateX(0) translateY(-4px); box-shadow: 28px 34px 65px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.3); }
+.hero-image img { width: 100%; height: 100%; object-fit: cover; object-position: center 42%; }
+.hero-image::after { position: absolute; inset: 45% 0 0; content: ""; background: linear-gradient(transparent, rgba(10,35,29,.62)); }
+.image-caption { position: absolute; z-index: 1; right: 26px; bottom: 47px; left: 52px; }
+.image-caption span { color: #b8d6bd; font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.image-caption p { margin: 4px 0 0; font-family: var(--serif); font-size: 20px; }
+.floating-card { position: absolute; z-index: 2; top: 52px; right: 0; width: 182px; padding: 16px; color: var(--ink); background: white; border-radius: 7px; box-shadow: 0 20px 45px rgba(0,0,0,.25), 0 3px 8px rgba(0,0,0,.12); transform: translateZ(55px) rotateY(-4deg) rotateX(2deg); }
+.floating-card .stars { color: var(--gold); font-size: 12px; letter-spacing: 2px; }
+.floating-card strong { display: block; margin-top: 5px; color: var(--green); font-family: var(--serif); font-size: 22px; line-height: 1.2; }
+.floating-card small { display: block; margin-top: 5px; color: var(--muted); font-size: 10px; }
+.floating-icon { position: absolute; z-index: 2; bottom: 7px; left: 0; width: 72px; height: 72px; display: grid; place-items: center; border: 6px solid var(--green); border-radius: 50%; color: var(--green); background: #eaf2eb; box-shadow: 0 13px 28px rgba(0,0,0,.25); font-family: var(--serif); font-size: 27px; transform: translateZ(45px); }
+.kids-animation { position: absolute; z-index: 3; right: -8px; bottom: 2px; width: 194px; padding: 7px 10px 9px; border: 1px solid rgba(255,255,255,.7); border-radius: 14px; background: rgba(255,255,255,.94); box-shadow: 0 18px 38px rgba(0,0,0,.24); transform: translateZ(65px) rotateY(-3deg); }
+.kids-animation svg { display: block; width: 100%; overflow: visible; }
+.kids-animation > span { display: block; color: var(--green); font-size: 9px; font-weight: 700; letter-spacing: .08em; text-align: center; text-transform: uppercase; }
+.kids-character { transform-box: fill-box; transform-origin: center bottom; animation: kids-gentle-bob 2.8s ease-in-out infinite; }
+.kids-character-right { animation-delay: .45s; }
+.kids-book { transform-box: fill-box; transform-origin: center bottom; animation: kids-book-lift 2.8s ease-in-out infinite; }
+@keyframes kids-gentle-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+@keyframes kids-book-lift { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-1px) rotate(-1deg); } }
+
+.trust-strip { border-bottom: 1px solid var(--line); background: var(--cream); }
+.trust-inner { min-height: 92px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+.trust-intro { max-width: 170px; color: var(--muted); font-size: 11px; line-height: 1.5; }
+.trust-item { display: flex; align-items: center; gap: 10px; color: var(--green); font-size: 11px; font-weight: 700; }
+.trust-item span { display: grid; width: 33px; height: 33px; place-items: center; border-radius: 50%; color: var(--green-mid); background: #e6eee5; font-size: 15px; }
+
+.section { padding: 91px 0; }
+.section-soft { background: var(--cream); }
+.section-heading { max-width: 650px; margin: 0 auto 42px; text-align: center; }
+.section-heading .eyebrow { margin-bottom: 12px; }
+.section-heading h2 { margin: 0; color: var(--green); font-family: var(--serif); font-size: clamp(32px, 4vw, 43px); font-weight: 500; line-height: 1.2; letter-spacing: -.025em; }
+.section-heading p { margin: 14px auto 0; color: var(--muted); font-size: 13px; line-height: 1.8; }
+
+.course-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; }
+.course-card:last-child:nth-child(3n + 2) { grid-column: 2; }
+.course-card { padding: 25px 22px 22px; border: 1px solid var(--line); border-radius: 7px; background: white; transition: transform .2s, box-shadow .2s, border-color .2s; }
+.course-card:hover { transform: translateY(-5px); border-color: #c5d5c7; box-shadow: 0 14px 32px rgba(18,63,53,.08); }
+.course-icon { width: 47px; height: 47px; display: grid; place-items: center; margin-bottom: 19px; border-radius: 50%; color: var(--green-mid); background: var(--green-soft); font-family: var(--serif); font-size: 21px; }
+.course-card h3 { margin: 0 0 9px; color: var(--green); font-family: var(--serif); font-size: 19px; font-weight: 600; }
+.course-card p { min-height: 64px; margin: 0 0 18px; color: var(--muted); font-size: 11px; line-height: 1.7; }
+.text-link { display: inline-flex; align-items: center; gap: 7px; color: var(--green-mid); font-size: 11px; font-weight: 700; }
+.text-link span { font-size: 16px; transition: transform .2s; }
+.text-link:hover span { transform: translateX(4px); }
+
+.about-grid { display: grid; grid-template-columns: .93fr 1.07fr; gap: 78px; align-items: center; }
+.about-visual { position: relative; min-height: 410px; }
+.about-image { position: absolute; inset: 0 40px 25px 0; overflow: hidden; border-radius: 7px 150px 7px 7px; background: #d8dfd4; }
+.about-image img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.about-stamp { position: absolute; right: 0; bottom: 0; width: 145px; height: 145px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 8px solid white; border-radius: 50%; color: white; background: var(--green-mid); text-align: center; }
+.about-stamp strong { font-family: var(--serif); font-size: 31px; font-weight: 500; line-height: 1; }
+.about-stamp span { max-width: 85px; margin-top: 7px; font-size: 9px; line-height: 1.4; }
+.about-copy .eyebrow { margin-bottom: 12px; }
+.about-copy h2 { max-width: 520px; margin: 0; color: var(--green); font-family: var(--serif); font-size: clamp(32px, 4vw, 43px); font-weight: 500; line-height: 1.2; letter-spacing: -.025em; }
+.about-copy > p { margin: 17px 0 22px; color: var(--muted); font-size: 13px; line-height: 1.8; }
+.founder-card { margin: 0 0 24px; padding: 16px 18px; border-left: 3px solid var(--gold); background: #fff; }
+.founder-card > span { display: block; margin-bottom: 3px; color: var(--muted); font-size: 9px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.founder-card h3 { margin: 0; color: var(--green); font-family: var(--serif); font-size: 20px; font-weight: 600; }
+.founder-links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 9px; }
+.founder-links a { color: var(--green-mid); font-size: 11px; font-weight: 600; overflow-wrap: anywhere; }
+.founder-links a:hover { text-decoration: underline; }
+.check-list { display: grid; grid-template-columns: 1fr 1fr; gap: 13px 18px; margin: 0 0 27px; padding: 0; list-style: none; }
+.check-list li { display: flex; gap: 9px; color: #40564d; font-size: 11px; font-weight: 600; }
+.check-list li::before { content: "✓"; flex-shrink: 0; color: #648e64; font-weight: 700; }
+
+.steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 27px; counter-reset: step; }
+.step-card { position: relative; padding: 27px 23px; border-top: 1px solid #dce2d8; counter-increment: step; }
+.step-card::before { content: "0" counter(step); display: block; margin-bottom: 18px; color: var(--green-mid); font-family: var(--serif); font-size: 25px; }
+.step-card:not(:last-child)::after { position: absolute; top: 42px; right: -22px; content: "→"; color: #a6b5a8; font-size: 20px; }
+.step-card h3 { margin: 0 0 9px; color: var(--green); font-family: var(--serif); font-size: 20px; }
+.step-card p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.75; }
+
+.demo-section { padding: 72px 0 40px; background: var(--cream); }
+.demo-card { padding: clamp(24px, 5vw, 46px); border-radius: 7px; color: white; background: var(--green); }
+.demo-card h2 { margin: 0 0 28px; font-family: var(--serif); font-size: clamp(30px, 4vw, 38px); font-weight: 500; text-align: center; }
+.demo-card h2 strong { font-weight: 700; }
+.demo-form { display: grid; grid-template-columns: 1fr 1fr; gap: 15px 18px; }
+.demo-form label { display: block; }
+.demo-form label span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+.demo-form input,
+.demo-form select,
+.demo-form textarea { width: 100%; min-height: 48px; padding: 11px 14px; border: 1px solid rgba(255,255,255,.55); border-radius: 3px; outline: none; color: #29342e; background: white; font-size: 13px; }
+.demo-form input:focus,
+.demo-form select:focus,
+.demo-form textarea:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(18,63,53,.16); }
+.demo-form textarea { min-height: 75px; resize: vertical; }
+.demo-form .form-message { grid-column: 1 / -1; }
+.demo-form .form-actions { grid-column: 1 / -1; display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+.demo-submit { min-height: 46px; padding: 0 22px; border: 1px solid rgba(255,255,255,.7); border-radius: 3px; color: var(--green-deep); background: #fff; font-size: 13px; font-weight: 700; cursor: pointer; transition: background .2s, transform .2s; }
+.demo-submit:hover { transform: translateY(-1px); background: #eaf2eb; }
+.demo-status { margin: 0; color: white; font-size: 11px; }
+.enroll-section { padding: 63px 0 68px; color: white; background: var(--green-deep); }
+.enroll-section h2 { margin: 0 0 21px; font-family: var(--serif); font-size: clamp(32px, 4vw, 42px); font-weight: 500; }
+.enroll-section > .container > p { max-width: 900px; margin: 0 0 20px; font-size: 14px; line-height: 1.85; }
+.enroll-section strong { color: #b8d6bd; }
+.enroll-list { display: grid; gap: 13px; margin: 0; padding: 0; list-style: none; }
+.enroll-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; line-height: 1.65; }
+.enroll-list li::before { content: ""; flex: 0 0 16px; width: 16px; height: 16px; margin-top: 3px; border: 3px solid white; border-radius: 50%; }
+
+.quote-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; }
+.quote-card { padding: 24px; border: 1px solid var(--line); border-radius: 6px; background: white; }
+.quote-stars { color: var(--green-mid); font-size: 12px; letter-spacing: 2px; }
+.quote-card blockquote { margin: 15px 0 19px; color: #45574f; font-family: var(--serif); font-size: 16px; line-height: 1.7; }
+.quote-person { display: flex; align-items: center; gap: 10px; }
+.quote-avatar { width: 35px; height: 35px; display: grid; place-items: center; border-radius: 50%; color: var(--green); background: #e8eee7; font-size: 11px; font-weight: 700; }
+.quote-person strong { display: block; color: var(--green); font-size: 11px; }
+.quote-person small { display: block; color: var(--muted); font-size: 9px; }
+
+.quran-section { padding: 75px 0; color: white; background: var(--green); }
+.quran-layout { display: grid; grid-template-columns: .75fr 1.25fr; gap: 48px; align-items: center; }
+.quran-copy .eyebrow { color: #b8d6bd; }
+.quran-copy h2 { margin: 0; font-family: var(--serif); font-size: clamp(30px, 3.5vw, 39px); font-weight: 500; line-height: 1.2; }
+.quran-copy p { margin: 14px 0 0; color: rgba(255,255,255,.72); font-size: 12px; line-height: 1.8; }
+.quran-tool { padding: 22px; border: 1px solid rgba(255,255,255,.2); border-radius: 7px; background: rgba(255,255,255,.06); }
+.quran-tool label { display: block; margin-bottom: 9px; color: rgba(255,255,255,.85); font-size: 11px; font-weight: 600; }
+.quran-search { width: 100%; min-height: 45px; padding: 0 14px; border: 1px solid rgba(255,255,255,.25); border-radius: 4px; outline: none; color: white; background: rgba(0,0,0,.13); font-size: 12px; }
+.quran-search::placeholder { color: rgba(255,255,255,.55); }
+.quran-search:focus { border-color: #b8d6bd; }
+.surah-results { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; max-height: 190px; overflow: auto; margin-top: 13px; }
+.surah-results.is-expanded { max-height: 420px; }
+.surah-item { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 9px 11px; border: 1px solid rgba(255,255,255,.12); border-radius: 4px; color: rgba(255,255,255,.88); background: rgba(255,255,255,.045); text-align: left; cursor: pointer; transition: background .2s; }
+.surah-item:hover { background: rgba(255,255,255,.14); }
+.surah-item strong { display: block; font-size: 10px; }
+.surah-item small { display: block; color: rgba(255,255,255,.58); font-size: 9px; }
+.surah-item .surah-arabic { color: #b8d6bd; font-family: var(--serif); font-size: 16px; }
+.surah-status { grid-column: 1 / -1; margin: 8px 0; color: rgba(255,255,255,.72); font-size: 11px; }
+.browse-chapters { margin-top: 12px; padding: 0; border: 0; color: #b8d6bd; background: transparent; font-size: 11px; font-weight: 700; cursor: pointer; }
+.browse-chapters:hover { color: white; }
+
+.cta-band { padding: 67px 0; background: var(--green-soft); }
+.cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+.cta-copy .eyebrow { margin-bottom: 9px; color: var(--green-mid); }
+.cta-copy h2 { max-width: 620px; margin: 0; color: var(--green); font-family: var(--serif); font-size: clamp(30px, 4vw, 40px); font-weight: 500; line-height: 1.2; }
+.cta-copy p { margin: 9px 0 0; color: var(--muted); font-size: 12px; }
+
+.site-footer { padding: 48px 0 20px; color: rgba(255,255,255,.73); background: #0b3029; }
+.footer-top { display: grid; grid-template-columns: 1.2fr .7fr .7fr 1fr; gap: 36px; padding-bottom: 38px; }
+.footer-brand .brand-copy strong { color: white; }
+.footer-brand .brand-copy span { color: rgba(255,255,255,.55); }
+.footer-brand > p { max-width: 310px; margin: 17px 0 0; font-size: 11px; line-height: 1.8; }
+.footer-column h3 { margin: 0 0 13px; color: white; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; }
+.footer-column a { display: block; width: fit-content; margin: 8px 0; color: rgba(255,255,255,.67); font-size: 11px; }
+.footer-column a:hover { color: #b8d6bd; }
+.footer-contact a { overflow-wrap: anywhere; }
+.footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.14); color: rgba(255,255,255,.47); font-size: 9px; }
+
+home-screen, about-screen, how-it-works-screen, materials-screen, chapters-directory-screen, quran-reader-screen, contact-screen { display: block; }
+how-it-works-screen { display: none; }
+about-screen { display: none; }
+contact-screen { display: none; }
+body.about-page main > :not(#about),
+body.about-page footer { display: none; }
+body.about-page #about { display: block; min-height: calc(100vh - 116px); padding: 0 0 70px; background: white; }
+.about-banner { padding: 48px 20px 42px; color: white; background: linear-gradient(rgba(5,19,16,.84), rgba(5,19,16,.84)), url("https://images.unsplash.com/photo-1564769625905-50e93615e769?auto=format&fit=crop&w=1800&q=85") center 48% / cover; text-align: center; }
+.about-banner h1 { margin: 0; font-family: var(--serif); font-size: clamp(36px, 5vw, 50px); font-weight: 500; }
+.about-banner p { margin: 8px 0 0; color: rgba(255,255,255,.76); font-size: 11px; }
+.about-banner a { color: #b8d6bd; font-weight: 700; }
+.about-overview { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: center; max-width: 1060px; margin: 42px auto 0; padding: 0 24px; }
+.about-overview-image { min-height: 320px; overflow: hidden; border-radius: 5px 100px 5px 5px; background: var(--green-soft); }
+.about-overview-image img { width: 100%; height: 100%; min-height: 320px; object-fit: cover; }
+.about-overview-copy .eyebrow { margin-bottom: 12px; }
+.about-overview-copy h2, .about-leadership h2 { margin: 0; color: var(--green); font-family: var(--serif); font-size: clamp(27px, 3vw, 36px); font-weight: 500; line-height: 1.25; }
+.about-overview-copy p, .about-leadership p { color: var(--muted); font-size: 12px; line-height: 1.85; }
+.about-values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; max-width: 1060px; margin: 38px auto 0; padding: 0 24px; }
+.about-value { padding: 23px; border-top: 2px solid var(--gold); background: var(--cream); }
+.about-value h3 { margin: 0 0 8px; color: var(--green); font-family: var(--serif); font-size: 20px; font-weight: 500; }
+.about-value p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.8; }
+.about-leadership { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; max-width: 1012px; margin: 30px auto 0; padding: 24px; border-radius: 5px; color: white; background: var(--green); }
+.about-leadership h2 { color: white; font-size: 23px; }
+.about-leadership p { margin: 5px 0 0; color: rgba(255,255,255,.76); }
+.about-leadership .button { flex-shrink: 0; }
+body.materials-page main > :not(#materials),
+body.materials-page footer { display: none; }
+#materials { display: none; }
+body.materials-page #materials { display: block; min-height: calc(100vh - 116px); padding-bottom: 55px; background: white; }
+body.contact-page main > :not(#contact),
+body.contact-page footer { display: none; }
+body.contact-page #contact { display: block; min-height: calc(100vh - 116px); padding: 56px 0 70px; background: var(--cream); }
+.contact-layout { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(240px, .8fr); gap: 38px; align-items: stretch; }
+.contact-form-card { padding: 32px; border: 1px solid var(--line); border-radius: 6px; background: white; }
+.contact-form-card h1 { margin: 0; color: var(--green); font-family: var(--serif); font-size: clamp(29px, 4vw, 38px); font-weight: 500; }
+.contact-form-intro { margin: 8px 0 23px; color: var(--muted); font-size: 12px; line-height: 1.8; }
+.contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.contact-form label { display: grid; gap: 5px; color: var(--ink); font-size: 11px; font-weight: 600; }
+.contact-form input, .contact-form select, .contact-form textarea { width: 100%; min-height: 42px; padding: 9px 11px; border: 1px solid #d9ded8; border-radius: 3px; outline: none; color: var(--ink); background: white; font: inherit; font-size: 12px; }
+.contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: var(--green-mid); box-shadow: 0 0 0 3px rgba(18,63,53,.12); }
+.contact-form .contact-message, .contact-form .contact-actions { grid-column: 1 / -1; }
+.contact-form textarea { min-height: 130px; resize: vertical; }
+.contact-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+.contact-submit { min-height: 42px; padding: 0 20px; border: 0; border-radius: 3px; color: white; background: var(--green); font-size: 12px; font-weight: 700; cursor: pointer; }
+.contact-submit:hover { background: var(--green-mid); }
+.contact-status { margin: 0; color: var(--green); font-size: 11px; }
+.contact-details { padding: 32px; border-radius: 6px; color: white; background: var(--green); }
+.contact-details h2 { margin: 0 0 28px; font-family: var(--serif); font-size: 24px; font-weight: 500; }
+.contact-details h3 { margin: 20px 0 4px; color: #dce9dd; font-size: 12px; }
+.contact-details p, .contact-details a { display: block; margin: 0; color: rgba(255,255,255,.8); font-size: 12px; overflow-wrap: anywhere; }
+.contact-details a:hover { color: white; text-decoration: underline; text-underline-offset: 3px; }
+body.how-it-works-page main > :not(#how-it-works),
+body.how-it-works-page footer { display: none; }
+body.how-it-works-page #how-it-works { display: block; min-height: calc(100vh - 116px); padding-top: 0; background: white; }
+.how-it-works-banner { padding: 54px 0 48px; color: white; background: var(--green-deep); }
+.how-it-works-banner .eyebrow { color: #b8d6bd; }
+.how-it-works-banner h1 { max-width: 800px; margin: 7px 0 18px; font-family: var(--serif); font-size: clamp(36px, 5vw, 54px); font-weight: 500; line-height: 1.15; }
+.how-it-works-banner p { max-width: 850px; color: rgba(255,255,255,.8); font-size: 14px; line-height: 1.85; }
+.how-it-works-banner .how-it-works-lead { color: white; font-size: 16px; font-weight: 600; }
+.how-it-works-banner .button { margin-top: 13px; }
+body.how-it-works-page .steps-content { padding-top: 45px; padding-bottom: 65px; }
+#chapters-directory { display: none; }
+body.chapters-directory-page main > :not(#chapters-directory),
+body.chapters-directory-page footer { display: none; }
+body.chapters-directory-page #chapters-directory { display: block; min-height: calc(100vh - 116px); padding-bottom: 55px; background: var(--white); }
+body.digital-quran-page .chapter-pdf-link-wrap { display: none; }
+#digital-quran { display: none; }
+body.digital-quran-page main > :not(#digital-quran),
+body.digital-quran-page footer { display: none; }
+body.digital-quran-page #digital-quran { display: block; min-height: calc(100vh - 116px); padding-bottom: 48px; background: #f7f7f7; }
+.digital-quran-banner { min-height: 174px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 30px 20px; color: white; background: linear-gradient(rgba(0,0,0,.82), rgba(0,0,0,.82)), url("https://images.unsplash.com/photo-1564769625905-50e93615e769?auto=format&fit=crop&w=1800&q=85") center 48% / cover; text-align: center; }
+.digital-quran-banner h1 { margin: 0; font-family: var(--serif); font-size: clamp(34px, 5vw, 44px); font-weight: 500; }
+.digital-quran-banner p { margin: 8px 0 0; color: rgba(255,255,255,.8); font-size: 11px; }
+.digital-quran-banner a { color: white; font-weight: 700; }
+.digital-quran-reader { width: min(776px, calc(100% - 40px)); margin: 0 auto; }
+.digital-quran-heading { padding: 19px 0 16px; text-align: center; }
+.digital-quran-heading h2 { margin: 0; color: var(--ink); font-family: var(--serif); font-size: 23px; font-weight: 400; }
+.digital-quran-heading h2::after { display: block; width: 43px; height: 1px; margin: 8px auto 0; content: ""; background: #b98859; }
+.digital-quran-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 15px; }
+.digital-quran-controls label { min-width: 0; }
+.digital-quran-controls label span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+.digital-quran-controls select { width: 100%; height: 39px; padding: 0 12px; border: 1px solid #d9ded8; border-radius: 8px; color: #202a25; background: white; font-size: 11px; }
+.digital-quran-controls select:focus-visible { outline: 2px solid #4c8dc1; outline-offset: 2px; }
+.digital-quran-surah { min-height: 51px; display: flex; align-items: center; justify-content: center; gap: 9px; padding: 7px 12px; background: #efefed; }
+.digital-quran-surah strong { font-size: 14px; }
+.digital-quran-surah > span { font-family: "Noto Naskh Arabic", "Traditional Arabic", serif; font-size: 16px; }
+.digital-quran-surah button { width: 27px; height: 22px; border: 0; border-radius: 7px; color: white; background: #347fb4; font-size: 20px; line-height: 1; cursor: pointer; }
+.digital-quran-surah button:disabled { opacity: .45; cursor: not-allowed; }
+.digital-quran-verses { overflow: hidden; }
+.digital-quran-ayah { padding: 10px 12px 8px; background: white; }
+.digital-quran-ayah:nth-child(odd) { background: #efefed; }
+.digital-quran-arabic { margin: 0; color: #202a25; font-family: "Traditional Arabic", "Noto Naskh Arabic", serif; font-size: 21px; line-height: 1.8; text-align: right; }
+.digital-quran-arabic span { font-size: 15px; }
+.digital-quran-translation { margin: 7px 0 0; color: #161a18; font-size: 11px; line-height: 1.6; }
+.digital-quran-status { padding: 28px 12px; color: var(--muted); background: white; font-size: 12px; text-align: center; }
+.digital-quran-translation-credit { margin: 10px 0 0; color: var(--muted); font-size: 10px; text-align: right; }
+.chapter-directory-banner { padding: 48px 20px 39px; color: white; background: var(--green-deep); text-align: center; }
+.chapter-directory-banner h1 { margin: 0; font-family: var(--serif); font-size: clamp(34px, 5vw, 48px); font-weight: 500; }
+.chapter-directory-banner p { margin: 8px 0 0; color: rgba(255,255,255,.75); font-size: 11px; }
+.chapter-directory-banner a { color: #b8d6bd; font-weight: 700; }
+.chapter-directory-heading { padding: 25px 18px 20px; background: var(--green-soft); text-align: center; }
+.chapter-directory-heading h2 { margin: 0; color: var(--green); font-family: var(--serif); font-size: 27px; font-weight: 500; }
+.chapter-directory-heading p { margin: 6px 0 0; color: var(--muted); font-size: 11px; }
+.chapter-directory-shell { width: min(1160px, calc(100% - 48px)); margin: 0 auto; padding: 24px 0 34px; }
+.chapter-directory-back { margin-bottom: 20px; }
+.chapter-directory-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px 20px; }
+.chapter-directory-item { min-height: 44px; display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 9px 13px; border: 1px solid #d5e2d6; border-radius: 4px; color: var(--green); background: var(--green-soft); cursor: pointer; transition: background .2s, color .2s, transform .2s; }
+.chapter-directory-item:hover { transform: translateY(-2px); color: white; background: var(--green-mid); }
+.chapter-directory-item strong { font-size: 11px; }
+.chapter-directory-item span { color: var(--muted); font-family: var(--serif); font-size: 12px; }
+.chapter-directory-item:hover span { color: rgba(255,255,255,.8); }
+.chapter-directory-item .sipara-name-urdu { color: var(--green); font-family: "Noto Naskh Arabic", "Traditional Arabic", serif; font-size: 15px; }
+.chapter-directory-item:hover .sipara-name-urdu { color: white; }
+.chapter-directory-status { grid-column: 1 / -1; padding: 28px 10px; color: var(--muted); font-size: 12px; text-align: center; }
+.chapter-directory-contact { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 20px 24px; border-radius: 6px; color: white; background: var(--green); }
+.chapter-directory-contact h2 { margin: 0; font-family: var(--serif); font-size: 18px; font-weight: 500; }
+.chapter-directory-contact p { margin: 4px 0 0; color: rgba(255,255,255,.75); font-size: 10px; }
+.chapter-directory-contact-links { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+.chapter-directory-contact-links a { color: #dce9dd; font-size: 11px; font-weight: 600; }
+.chapter-directory-contact-links a:hover { text-decoration: underline; }
+.materials-banner {
+  min-height: 190px; display: grid; place-items: center; padding: 30px 20px; color: white;
+  background: linear-gradient(rgba(9,35,29,.86), rgba(9,35,29,.86)), url("https://images.unsplash.com/photo-1564769625905-50e93615e769?auto=format&fit=crop&w=1800&q=85") center 48% / cover;
+  text-align: center;
+}
+.materials-banner h1 { margin: 0; font-family: var(--serif); font-size: clamp(38px, 5vw, 54px); font-weight: 500; }
+.materials-breadcrumb { margin: 9px 0 0; color: rgba(255,255,255,.75); font-size: 12px; }
+.materials-breadcrumb a { color: white; font-weight: 700; }
+.materials-intro { max-width: 1060px; margin: 0 auto; padding: 42px 24px 36px; }
+.materials-intro > p { max-width: 900px; margin: 0 auto 22px; color: var(--muted); font-size: 13px; line-height: 1.8; text-align: center; }
+.materials-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px 18px; }
+.material-link {
+  min-height: 50px; display: flex; align-items: center; justify-content: center; padding: 10px 16px;
+  color: white; background: var(--green-mid); clip-path: polygon(0 0, 100% 0, 100% 76%, 92% 100%, 0 100%);
+  font-size: 10px; font-weight: 700; text-align: center; transition: background .2s, transform .2s;
+}
+.material-link:hover { transform: translateY(-2px); background: var(--green-mid); }
+.materials-feature { display: grid; grid-template-columns: .7fr 1.3fr; min-height: 200px; color: white; background: var(--green); }
+.materials-feature-copy { display: flex; flex-direction: column; justify-content: center; padding: 30px max(24px, calc((100vw - 1160px) / 2)); }
+.materials-feature-copy .eyebrow { color: #b8d6bd; }
+.materials-feature-copy h2 { margin: 0; font-family: var(--serif); font-size: clamp(25px, 3vw, 34px); font-weight: 500; line-height: 1.2; }
+.materials-feature-image { min-height: 200px; background: linear-gradient(90deg, rgba(11,48,41,.62), rgba(11,48,41,.45)), url("https://images.unsplash.com/photo-1564769625905-50e93615e769?auto=format&fit=crop&w=1400&q=85") center 48% / cover; }
+.materials-details { max-width: 1060px; margin: 0 auto; padding: 28px 24px 0; color: var(--muted); font-size: 12px; line-height: 1.85; }
+.materials-details strong { color: var(--ink); }
+.materials-back { display: none; width: fit-content; margin: 0 auto 21px; }
+body.materials-page .materials-back { display: inline-flex; }
+
+.chapter-page { display: none; min-height: calc(100vh - 116px); padding: 38px 0 70px; background: var(--cream); }
+body.reader-page main > :not(#chapter-page),
+body.reader-page footer { display: none; }
+body.reader-page #chapter-page { display: block; }
+body.sipara-reader-page .chapter-bismillah { display: none; }
+.chapter-shell { width: min(820px, calc(100% - 40px)); margin: 0 auto; }
+.chapter-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding-bottom: 19px; border-bottom: 1px solid var(--line); }
+.chapter-back { display: inline-flex; align-items: center; gap: 8px; padding: 9px 12px; border: 1px solid var(--line); border-radius: 4px; color: var(--green); background: white; font-size: 11px; font-weight: 700; cursor: pointer; }
+.chapter-back:hover { border-color: var(--green-mid); background: var(--green-soft); }
+.chapter-navigation { display: flex; gap: 8px; }
+.chapter-navigation button { padding: 9px 12px; border: 1px solid var(--line); border-radius: 4px; color: var(--green); background: white; font-size: 11px; cursor: pointer; }
+.chapter-navigation button:disabled { opacity: .4; cursor: not-allowed; }
+.reader-heading { padding: 22px 0 19px; border-bottom: 1px solid var(--line); text-align: center; }
+.reader-heading h2 { margin: 0; color: var(--green); font-family: var(--serif); font-size: 28px; font-weight: 500; }
+.reader-heading p { margin: 5px 0 0; color: var(--muted); font-size: 11px; }
+.chapter-bismillah { margin: 15px 0; color: var(--green-mid); font-family: var(--serif); font-size: 25px; text-align: center; }
+.chapter-verses { padding: 0 20px; border-radius: 6px; background: white; }
+.chapter-status { padding: 30px 0; color: var(--muted); font-size: 12px; text-align: center; }
+.chapter-page .ayah { padding: 21px 0; border-bottom: 1px solid var(--line); }
+.chapter-page .ayah:last-child { border-bottom: 0; }
+.chapter-page .ayah-arabic { color: var(--green); font-family: "Traditional Arabic", "Noto Naskh Arabic", serif; font-size: 27px; line-height: 2; text-align: right; }
+.chapter-page .ayah-translation { margin-top: 9px; color: #56665f; font-size: 13px; line-height: 1.8; }
+.notice {
+  position: fixed; z-index: 60; right: 24px; bottom: 24px; max-width: min(390px, calc(100% - 48px));
+  padding: 14px 17px; border-radius: 5px; color: white; background: var(--green-deep);
+  box-shadow: 0 8px 30px rgba(0,0,0,.18); font-size: 12px;
+}
+
+@media (max-width: 960px) {
+  .main-nav { gap: 18px; }
+  .header-phone { display: none; }
+  .hero-grid { gap: 35px; }
+  .course-grid { grid-template-columns: repeat(2, 1fr); }
+  .course-card:last-child:nth-child(odd) { grid-column: 1 / -1; width: calc(50% - 6px); justify-self: center; }
+  .about-grid { gap: 42px; }
+  .quran-layout { grid-template-columns: .8fr 1.2fr; gap: 30px; }
+}
+@media (max-width: 700px) {
+  html { scroll-padding-top: 72px; }
+  .container { width: min(100% - 36px, 520px); }
+  .announcement { display: block; font-size: 10px; line-height: 1.8; }
+  .header-inner { min-height: 68px; }
+  .brand-mark { width: 39px; height: 39px; }
+  .brand-copy strong { font-size: 17px; }
+  .header-actions .button { min-height: 39px; padding: 0 12px; font-size: 10px; }
+  .menu-toggle { display: block; }
+  .main-nav {
+    position: absolute; top: 100%; right: 0; left: 0; display: none; align-items: stretch;
+    gap: 0; padding: 8px 18px 16px; border-bottom: 1px solid var(--line); background: white;
+  }
+  .main-nav.is-open { display: flex; flex-direction: column; }
+  .main-nav a { padding: 12px 4px; border-bottom: 1px solid #f0f1ec; }
+  .hero { min-height: auto; padding: 56px 0 49px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+  .hero h1 { font-size: clamp(42px, 12vw, 58px); }
+  .hero-copy > p { margin: 17px 0 22px; font-size: 13px; }
+  .hero-copy > .hero-tagline { margin: 10px 0 0; font-size: 17px; }
+  .hero-copy > .hero-intro { margin: 10px 0 22px; font-size: 12px; }
+  .hero-visual { min-height: 360px; margin: 0 9px; }
+  .hero-spiritual-glow { top: 23%; right: -2px; width: 78px; }
+  .hero-image { inset: 0 23px 19px; }
+  .floating-card { top: 36px; width: 160px; padding: 13px; }
+  .kids-animation { right: -7px; bottom: 0; width: 170px; }
+  .floating-icon { z-index: 4; }
+  .image-caption { right: 22px; bottom: 38px; left: 41px; }
+  .trust-inner { justify-content: center; flex-wrap: wrap; gap: 14px 20px; padding: 20px 0; }
+  .trust-intro { width: 100%; max-width: none; text-align: center; }
+  .trust-item { font-size: 10px; }
+  .trust-item span { width: 28px; height: 28px; }
+  .section { padding: 67px 0; }
+  .how-it-works-banner { padding: 39px 0 35px; }
+  .how-it-works-banner p { font-size: 12px; }
+  .how-it-works-banner .how-it-works-lead { font-size: 14px; }
+  body.how-it-works-page .steps-content { padding-top: 35px; padding-bottom: 48px; }
+  .section-heading { margin-bottom: 30px; }
+  .section-heading p { font-size: 12px; }
+  .course-grid { gap: 11px; }
+  .course-card { padding: 19px 15px; }
+  .course-card:last-child:nth-child(odd) { width: calc(50% - 6px); }
+  .course-card h3 { font-size: 17px; }
+  .course-card p { min-height: 84px; font-size: 10px; }
+  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+  .about-visual { min-height: 340px; }
+  .about-image { inset: 0 32px 20px 0; }
+  .about-stamp { width: 120px; height: 120px; }
+  .about-stamp strong { font-size: 27px; }
+  .about-copy > p { font-size: 12px; }
+  .about-banner { padding: 36px 16px 31px; }
+  .about-overview { grid-template-columns: 1fr; gap: 23px; margin-top: 28px; padding: 0 18px; }
+  .about-overview-image, .about-overview-image img { min-height: 250px; }
+  .about-values { grid-template-columns: 1fr; gap: 11px; margin-top: 25px; padding: 0 18px; }
+  .about-value { padding: 19px; }
+  .about-leadership { align-items: flex-start; flex-direction: column; margin: 20px 18px 0; padding: 20px; }
+  body.contact-page #contact { padding: 36px 0 48px; }
+  .contact-layout { grid-template-columns: 1fr; gap: 18px; }
+  .contact-form-card, .contact-details { padding: 23px 19px; }
+  .contact-form { grid-template-columns: 1fr; gap: 12px; }
+  .contact-form .contact-message, .contact-form .contact-actions { grid-column: auto; }
+  .contact-details h2 { margin-bottom: 18px; }
+  .check-list { gap: 11px; }
+  .check-list li { font-size: 10px; }
+  .steps-grid { grid-template-columns: 1fr; gap: 6px; }
+  .step-card { padding: 19px 16px; }
+  .step-card::before { margin-bottom: 9px; font-size: 22px; }
+  .step-card:not(:last-child)::after { top: auto; right: 14px; bottom: -16px; transform: rotate(90deg); }
+  .demo-section { padding: 48px 0 26px; }
+  .demo-form { grid-template-columns: 1fr; gap: 11px; }
+  .demo-form .form-message,
+  .demo-form .form-actions { grid-column: auto; }
+  .demo-card h2 { margin-bottom: 21px; }
+  .enroll-section { padding: 48px 0; }
+  .enroll-section > .container > p,
+  .enroll-list li { font-size: 12px; }
+  .quote-grid { grid-template-columns: 1fr; gap: 11px; }
+  .quote-card { padding: 20px; }
+  .quran-section { padding: 62px 0; }
+  .quran-layout { grid-template-columns: 1fr; gap: 23px; }
+  .surah-results { grid-template-columns: 1fr; max-height: 220px; }
+  .cta-band { padding: 50px 0; }
+  .cta-inner { align-items: flex-start; flex-direction: column; gap: 22px; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 28px 20px; }
+  .footer-brand { grid-column: 1 / -1; }
+  .footer-bottom { flex-direction: column; gap: 5px; }
+  .chapter-page { min-height: calc(100vh - 68px); padding-top: 23px; }
+  .chapter-shell { width: min(100% - 30px, 520px); }
+  .chapter-page .ayah-arabic { font-size: 23px; }
+  .chapter-verses { padding: 0 13px; }
+  .chapter-navigation button { padding: 9px; font-size: 10px; }
+  .materials-banner { min-height: 160px; }
+  .materials-intro { padding: 30px 18px; }
+  .materials-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .material-link { min-height: 46px; padding: 8px 10px; font-size: 9px; }
+  .materials-feature { grid-template-columns: 1fr; }
+  .materials-feature-copy { min-height: 150px; padding: 25px 22px; }
+  .materials-feature-image { min-height: 150px; }
+  .materials-details { padding: 23px 18px 0; }
+  .chapter-directory-banner { padding: 34px 16px 28px; }
+  .digital-quran-banner { min-height: 150px; }
+  .digital-quran-reader { width: min(100% - 30px, 520px); }
+  .digital-quran-controls { grid-template-columns: 1fr; }
+  .digital-quran-ayah { padding-right: 10px; padding-left: 10px; }
+  .digital-quran-arabic { font-size: 20px; }
+  .chapter-directory-shell { width: min(100% - 32px, 520px); padding-top: 19px; }
+  .chapter-directory-grid { grid-template-columns: repeat(2, 1fr); gap: 9px; }
+  .chapter-directory-item { min-height: 42px; padding: 8px 9px; }
+  .chapter-directory-contact { align-items: flex-start; flex-direction: column; padding: 18px; }
+  .chapter-directory-contact-links { flex-direction: column; gap: 7px; }
+}
+@media (max-width: 390px) {
+  .header-inner { gap: 10px; }
+  .brand-copy span { display: none; }
+  .brand-copy strong { font-size: 15px; }
+  .header-actions { gap: 6px; }
+  .header-actions .button { display: none; }
+  .course-grid { grid-template-columns: 1fr; }
+  .course-card:last-child:nth-child(odd) { grid-column: auto; width: 100%; }
+  .course-card p { min-height: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+  .hero-visual:hover .hero-image { transform: rotateY(-5deg) rotateX(2deg); }
+  .kids-character, .kids-book { animation: none; }
+  .hero-spiritual-glow, .hero-glow-orbit, .hero-glow-star, .hero-glow-dot { animation: none; }
+}
