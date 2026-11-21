@@ -1,0 +1,380 @@
+/* Homepage sections, shared section headings, page hero and the Book a Free Demo block. */
+
+/* ---------- Section shell & headings ---------- */
+.home-section { padding: 96px 0; }
+.section-white { background: var(--white); }
+.section-cream { background: var(--cream); }
+
+.section-title { max-width: 680px; margin: 0 auto 52px; text-align: center; }
+.section-title-left { margin-left: 0; text-align: left; }
+.section-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px; margin-bottom: 14px;
+  color: var(--green-mid); font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+}
+.section-eyebrow::before { width: 28px; height: 2px; content: ""; border-radius: 2px; background: var(--gold); }
+.section-title h2 { margin: 0; color: var(--green); font-family: var(--serif); font-size: clamp(30px, 4vw, 44px); font-weight: 600; line-height: 1.18; letter-spacing: -.02em; }
+.section-title p { margin: 16px auto 0; color: var(--muted); font-size: 17px; line-height: 1.75; }
+.section-title-left p { margin-left: 0; }
+.section-title-on-dark h2 { color: #fff; }
+.section-title-on-dark p { color: var(--on-dark-muted); }
+.section-title-on-dark .section-eyebrow { color: var(--gold); }
+.section-cta { margin-top: 48px; text-align: center; }
+
+/* Highlighted heading words: bright yellow on dark backgrounds, deep amber gold on light ones
+   (bright yellow text on white is too faint; #b87d00 keeps the gold look and stays readable,
+   3.5:1 on white / 3.3:1 on cream — above the 3:1 needed for large headings). */
+.section-white .text-highlight,
+.section-cream .text-highlight,
+.book-demo-page .text-highlight {
+  color: var(--gold-text);
+}
+
+/* ---------- Hero ---------- */
+.home-hero {
+  position: relative; overflow: hidden; padding: 72px 0 92px; color: #fff;
+  background-color: var(--green);
+  background-image: radial-gradient(circle at 85% 12%, rgba(47, 147, 115, .38), transparent 52%), var(--pattern-on-dark);
+}
+.home-hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px; padding: 7px 16px;
+  border: 1px solid rgba(253, 185, 19, .45); border-radius: var(--radius-pill);
+  color: var(--gold); background: rgba(253, 185, 19, .08);
+  font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+}
+.home-hero h1 { max-width: 620px; margin: 22px 0 0; font-family: var(--serif); font-size: clamp(38px, 5vw, 60px); font-weight: 600; line-height: 1.1; letter-spacing: -.02em; }
+.home-hero-lead { max-width: 560px; margin: 22px 0 0; color: var(--on-dark); font-size: 18px; line-height: 1.75; }
+.home-hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+.home-hero-facts { display: flex; flex-wrap: wrap; gap: 14px 28px; margin: 38px 0 0; padding: 0; list-style: none; }
+.home-hero-facts li { display: flex; align-items: center; gap: 10px; color: var(--on-dark); font-size: 15px; font-weight: 500; }
+.home-hero-fact-icon { width: 34px; height: 34px; flex-shrink: 0; display: grid; place-items: center; border-radius: 50%; color: var(--gold); background: rgba(253, 185, 19, .14); }
+
+.home-hero-visual { position: relative; width: 100%; max-width: 480px; margin-left: auto; padding: 28px 44px 44px 48px; }
+.home-hero-photo {
+  position: relative; aspect-ratio: 4 / 5; overflow: hidden;
+  border: 6px solid rgba(255, 255, 255, .1); border-radius: 220px 220px 26px 26px;
+  background: #1d4a3f; box-shadow: var(--shadow-lg);
+}
+.home-hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+.home-hero-photo::after { position: absolute; inset: 55% 0 0; content: ""; background: linear-gradient(transparent, rgba(8, 42, 35, .45)); }
+
+.hero-card {
+  position: absolute; z-index: 2; max-width: 240px; display: flex; align-items: center; gap: 12px;
+  padding: 14px 18px 14px 14px; border-radius: 18px; box-shadow: var(--shadow-lg);
+  animation: hero-card-float 6s ease-in-out infinite;
+}
+.hero-card strong { display: block; font-size: 15px; line-height: 1.3; }
+.hero-card small { display: block; margin-top: 2px; font-size: 13px; line-height: 1.35; opacity: .85; }
+.hero-card-icon { width: 42px; height: 42px; flex-shrink: 0; display: grid; place-items: center; border-radius: 12px; }
+.hero-card-yellow { top: 52px; left: 0; color: var(--green-deep); background: var(--gold); }
+.hero-card-yellow .hero-card-icon { background: rgba(8, 42, 35, .12); }
+.hero-card-course { bottom: 112px; left: -6px; color: var(--ink); background: #fff; animation-delay: -2s; }
+.hero-card-course .hero-card-icon { color: var(--green-mid); background: var(--green-soft); }
+.hero-card-course small { color: var(--muted); opacity: 1; }
+.hero-card-teal { right: 0; bottom: 10px; color: #fff; background: var(--teal); animation-delay: -4s; }
+.hero-card-teal .hero-card-icon { background: rgba(255, 255, 255, .18); }
+/* The anchor matches the photo box (4:5 arch). 14.64% of the width across / 11.71% of the height down is the 45° point of the arch curve. */
+.hero-iqra-anchor { position: absolute; z-index: 2; inset: 28px 44px 44px 48px; pointer-events: none; }
+.hero-iqra {
+  position: absolute; top: 11.71%; left: 85.36%; width: 68px; height: 68px; display: grid; place-items: center;
+  border: 5px solid var(--green); border-radius: 50%; color: var(--green-deep); background: var(--gold);
+  font-family: var(--arabic); font-size: 25px; box-shadow: 0 12px 26px rgba(0, 0, 0, .25); transform: translate(-50%, -50%);
+}
+@keyframes hero-card-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+/* ---------- Why Choose Us: centred cards with a medallion icon on the top edge ---------- */
+.feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 64px 28px; padding-top: 36px; }
+.feature-card {
+  position: relative; padding: 58px 28px 32px; text-align: center;
+  border: 1px solid var(--line); border-radius: 24px;
+  background: linear-gradient(180deg, var(--cream) 0%, #fff 70%);
+  box-shadow: var(--shadow-sm);
+  transition: transform .3s, box-shadow .3s, border-color .3s;
+}
+.feature-card:hover { transform: translateY(-6px); border-color: rgba(253, 185, 19, .75); box-shadow: var(--shadow); }
+.feature-icon {
+  position: absolute; top: -38px; left: 50%; width: 76px; height: 76px; display: grid; place-items: center;
+  border: 6px solid #fff; border-radius: 50%;
+  color: var(--gold); background-color: var(--green); background-image: var(--pattern-on-dark);
+  box-shadow: 0 12px 26px rgba(14, 59, 49, .28), 0 0 0 1px var(--line);
+  transform: translateX(-50%); transition: background-color .3s, color .3s;
+}
+.feature-icon svg { width: 28px; height: 28px; }
+.feature-card:hover .feature-icon { color: var(--green-deep); background-color: var(--gold); }
+.feature-card h3 { margin: 0; color: var(--green); font-family: var(--serif); font-size: 21px; font-weight: 600; }
+.feature-card h3::after { display: block; width: 36px; height: 3px; margin: 14px auto 14px; content: ""; border-radius: 3px; background: var(--gold); }
+.feature-card p { max-width: 300px; margin: 0 auto; color: var(--muted); font-size: 15px; line-height: 1.7; }
+
+/* ---------- Courses: emerald header + gold medallion icon ---------- */
+.course-tile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.course-tile {
+  position: relative; display: flex; flex-direction: column; overflow: hidden;
+  border: 1px solid var(--line); border-radius: 24px; background: #fff; box-shadow: var(--shadow-sm);
+  transition: transform .3s, box-shadow .3s, border-color .3s;
+}
+.course-tile:hover { transform: translateY(-6px); border-color: rgba(253, 185, 19, .75); box-shadow: var(--shadow); }
+
+.course-tile-head {
+  position: relative; aspect-ratio: 16 / 10; flex-shrink: 0;
+  background-color: var(--green);
+  background-image: radial-gradient(circle at 85% 0%, rgba(253, 185, 19, .22), transparent 55%), var(--pattern-on-dark);
+}
+.course-tile-photo { position: absolute; inset: 0; overflow: hidden; }
+.course-tile-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+.course-tile:hover .course-tile-photo img { transform: scale(1.05); }
+.course-tile-title { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.course-tile-icon {
+  width: 54px; height: 54px; flex-shrink: 0; display: grid; place-items: center;
+  border-radius: 50%; color: var(--green-deep); background: var(--gold);
+  box-shadow: 0 0 0 5px var(--gold-soft); transition: background .3s, color .3s, box-shadow .3s;
+}
+.course-tile:hover .course-tile-icon { color: var(--gold); background: var(--green); box-shadow: 0 0 0 5px var(--green-soft); }
+
+.course-tile-body { display: flex; flex: 1; flex-direction: column; padding: 24px 26px 26px; }
+.course-tile h3 { flex: 1; min-width: 0; margin: 0; color: var(--green); font-family: var(--serif); font-size: 22px; font-weight: 600; line-height: 1.25; }
+.course-tile p { margin: 0 0 24px; color: var(--muted); font-size: 15px; line-height: 1.7; }
+
+.course-tile-link {
+  min-height: 48px; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: auto;
+  border: 1.5px solid var(--green); border-radius: var(--radius-pill);
+  color: var(--green); font-size: 14px; font-weight: 700; transition: background .25s, color .25s, border-color .25s;
+}
+.course-tile-link svg { transition: transform .25s; }
+.course-tile:hover .course-tile-link,
+.course-tile-link:focus-visible { color: var(--green-deep); background: var(--gold); border-color: var(--gold); }
+.course-tile:hover .course-tile-link svg { transform: translateX(4px); }
+
+/* ---------- 3 Steps: cards with a "Step N" tab, joined by dashed lines ---------- */
+.step-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin: 0; padding: 36px 0 0; list-style: none; counter-reset: none; }
+.step-item {
+  position: relative; display: flex; flex-direction: column; align-items: center; padding: 38px 28px 34px; text-align: center;
+  border: 1px solid var(--line); border-radius: 22px; background: var(--cream); box-shadow: var(--shadow-sm);
+  transition: transform .3s, box-shadow .3s, border-color .3s;
+}
+.section-cream .step-item { background: #fff; }
+.step-item:hover { transform: translateY(-6px); border-color: rgba(253, 185, 19, .7); box-shadow: var(--shadow); }
+
+/* "Step N" tab sitting on the top edge of the card */
+.step-tab {
+  position: absolute; bottom: 100%; left: 50%; width: 104px; height: 34px; display: grid; place-items: center;
+  border-radius: 12px 12px 0 0; color: var(--gold); background: var(--green);
+  font-size: 13px; font-weight: 700; letter-spacing: .06em; transform: translateX(-50%); transition: background .3s, color .3s;
+}
+.step-item:hover .step-tab { color: var(--green-deep); background: var(--gold); }
+
+/* Dashed line from this card's tab to the next card's tab */
+.step-item:not(:last-child)::before {
+  position: absolute; top: -17px; left: calc(50% + 62px); width: calc(100% - 92px); content: "";
+  border-top: 2px dashed rgba(14, 59, 49, .3);
+}
+
+/* 8-point star badge (two rotated squares) behind the icon */
+.step-icon { position: relative; isolation: isolate; width: 72px; height: 72px; display: grid; place-items: center; margin-bottom: 22px; color: var(--gold); }
+.step-icon::before, .step-icon::after {
+  position: absolute; z-index: -1; top: 11px; left: 11px; width: 50px; height: 50px; content: "";
+  border-radius: 9px; background: var(--green); box-shadow: 0 10px 22px rgba(14, 59, 49, .25);
+}
+.step-icon::after { transform: rotate(45deg); box-shadow: none; }
+
+.step-item h3 { margin: 0 0 10px; color: var(--green); font-family: var(--serif); font-size: 22px; font-weight: 600; line-height: 1.25; }
+.step-item p { max-width: 330px; margin: 0; color: var(--muted); font-size: 15px; line-height: 1.7; }
+
+/* ---------- Book a Free Demo ---------- */
+.book-demo {
+  padding: 96px 0; color: #fff;
+  background-color: var(--green);
+  background-image: radial-gradient(circle at 10% 90%, rgba(47, 147, 115, .35), transparent 50%), var(--pattern-on-dark);
+}
+.book-demo-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 56px; align-items: start; }
+.book-demo-intro { padding-top: 12px; }
+.book-demo-intro .section-eyebrow { color: var(--gold); }
+.book-demo-intro h2 { margin: 0; font-family: var(--serif); font-size: clamp(32px, 4vw, 46px); font-weight: 600; line-height: 1.15; letter-spacing: -.02em; }
+.book-demo-intro > p { margin: 18px 0 0; color: var(--on-dark); font-size: 17px; line-height: 1.75; }
+.book-demo-benefits { display: grid; gap: 14px; margin: 28px 0 32px; padding: 0; list-style: none; }
+.book-demo-benefits li { display: flex; align-items: flex-start; gap: 12px; color: var(--on-dark); font-size: 16px; line-height: 1.5; }
+.book-demo-benefits li > span { width: 26px; height: 26px; flex-shrink: 0; display: grid; place-items: center; border-radius: 50%; color: var(--green-deep); background: var(--gold); }
+.book-demo-card { padding: 36px; border-radius: 24px; color: var(--ink); background: #fff; box-shadow: var(--shadow-lg); }
+.book-demo-card-title { margin: 0 0 24px; color: var(--green); font-family: var(--serif); font-size: 24px; font-weight: 600; }
+
+/* /book-demo page variant: light background */
+.book-demo-page { padding: 72px 0 96px; color: var(--ink); background: var(--cream); background-image: none; }
+.book-demo-page .book-demo-intro .section-eyebrow { color: var(--green-mid); }
+.book-demo-page .book-demo-intro h2 { color: var(--green); }
+.book-demo-page .book-demo-intro > p,
+.book-demo-page .book-demo-benefits li { color: var(--muted); }
+.book-demo-page .book-demo-card { border: 1px solid var(--line); box-shadow: var(--shadow); }
+
+/* ---------- Page hero (inner pages) ---------- */
+.page-hero {
+  padding: 64px 0 60px; color: #fff; text-align: center;
+  background-color: var(--green); background-image: var(--pattern-on-dark);
+}
+.page-hero h1 { margin: 18px 0 0; font-family: var(--serif); font-size: clamp(34px, 5vw, 54px); font-weight: 600; line-height: 1.15; }
+.page-hero p { max-width: 640px; margin: 16px auto 0; color: var(--on-dark); font-size: 17px; line-height: 1.7; }
+.breadcrumb { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 4px 10px; margin-top: 22px; color: var(--on-dark-muted); font-size: 14px; }
+.breadcrumb a { padding: 6px 0; color: var(--gold); font-weight: 600; }
+.breadcrumb a:hover { text-decoration: underline; }
+
+/* ---------- Testimonials ---------- */
+/* Testimonial cards: dark corner tab with a gold quote mark, then name, country, stars, quote */
+/* Slider: no scrollbar, no dots. Arrow buttons sit on the sides (desktop) or below (smaller screens). */
+.testimonial-slider { position: relative; padding-bottom: 64px; }
+.testimonial-track {
+  display: flex; gap: 24px; margin: 0 -8px; padding: 10px 8px 22px; overflow-x: auto; scroll-snap-type: x mandatory;
+  scroll-padding-inline: 8px; scrollbar-width: none; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch;
+}
+.testimonial-track::-webkit-scrollbar { display: none; }
+.testimonial-track:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; border-radius: 14px; }
+.testimonial-arrow {
+  position: absolute; bottom: 0; width: 48px; height: 48px; display: grid; place-items: center; padding: 0;
+  border: 1.5px solid rgba(14, 59, 49, .22); border-radius: 50%; color: var(--green); background: #fff; cursor: pointer;
+  box-shadow: var(--shadow-sm); transition: background .2s, color .2s, border-color .2s, opacity .2s, transform .2s;
+}
+.testimonial-arrow.is-prev { left: calc(50% - 56px); }
+.testimonial-arrow.is-next { left: calc(50% + 8px); }
+.testimonial-arrow:hover:not(:disabled) { color: var(--green-deep); border-color: var(--gold); background: var(--gold); transform: scale(1.06); }
+.testimonial-arrow:disabled { opacity: .35; cursor: default; box-shadow: none; }
+/* Side arrows need room outside the 1180px container */
+@media (min-width: 1280px) {
+  .testimonial-slider { padding-bottom: 0; }
+  .testimonial-arrow { top: calc(50% - 34px); bottom: auto; width: 52px; height: 52px; }
+  .testimonial-arrow.is-prev { left: -26px; }
+  .testimonial-arrow.is-next { right: -26px; left: auto; }
+}
+.testimonial-card {
+  flex: 0 0 100%; scroll-snap-align: start;
+  position: relative; display: flex; flex-direction: column; margin: 0; padding: 38px 28px 34px; overflow: hidden;
+  border: 1px solid #e3e8e2; border-radius: 18px; background: #eef2ee; text-align: center;
+  transition: transform .25s, box-shadow .25s;
+}
+.testimonial-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.testimonial-corner {
+  position: absolute; top: 0; right: 0; width: 82px; height: 82px; display: grid; place-items: start end;
+  padding: 16px 18px 0 0; color: var(--gold); background: var(--green); border-radius: 0 18px 0 100%;
+}
+.testimonial-card figcaption { padding: 0 44px; }
+.testimonial-card figcaption strong { display: flex; align-items: center; justify-content: center; gap: 8px; color: var(--ink); font-size: 18px; font-weight: 700; line-height: 1.3; }
+.testimonial-card figcaption small { display: flex; align-items: center; justify-content: center; gap: 7px; margin-top: 4px; color: var(--muted); font-size: 14px; }
+.country-flag { width: 22px; height: auto; flex-shrink: 0; border-radius: 2px; box-shadow: 0 0 0 1px rgba(14, 59, 49, .15); }
+.testimonial-stars { display: block; margin-top: 12px; color: var(--gold); font-size: 20px; letter-spacing: 3px; line-height: 1; }
+.testimonial-card blockquote { flex: 1; margin: 22px 0 0; color: var(--ink); font-size: 15.5px; line-height: 1.8; }
+
+/* ---------- FAQ ---------- */
+.faq-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 56px; align-items: start; }
+.faq-intro .section-title { margin-bottom: 30px; }
+.faq-help { display: flex; gap: 16px; padding: 24px; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--cream); }
+.faq-help-icon { width: 50px; height: 50px; flex-shrink: 0; display: grid; place-items: center; border-radius: 50%; color: var(--green); background: var(--gold-soft); }
+.faq-help strong { display: block; color: var(--green); font-size: 17px; }
+.faq-help p { margin: 4px 0 16px; color: var(--muted); font-size: 15px; line-height: 1.6; }
+
+.accordion { display: grid; gap: 12px; }
+.accordion-item { border: 1px solid var(--line); border-radius: 16px; background: #fff; transition: border-color .2s, box-shadow .2s; }
+.accordion-item.is-open { border-color: rgba(253, 185, 19, .7); box-shadow: var(--shadow-sm); }
+.accordion-heading { margin: 0; }
+.accordion-button {
+  width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 20px 22px 20px 24px; border: 0; border-radius: 16px;
+  color: var(--green); background: transparent; font-size: 17px; font-weight: 700; line-height: 1.4; text-align: left; cursor: pointer;
+}
+.accordion-icon {
+  width: 34px; height: 34px; flex-shrink: 0; padding: 7px; border-radius: 50%;
+  color: var(--green); background: var(--green-soft); transition: transform .25s, background .25s;
+}
+.accordion-item.is-open .accordion-icon { color: var(--green-deep); background: var(--gold); transform: rotate(45deg); }
+.accordion-panel { padding: 0 24px 22px; }
+.accordion-panel p { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.75; }
+
+/* Keep the three hero facts on one row where the column is narrow */
+@media (min-width: 1024px) and (max-width: 1199px), (min-width: 600px) and (max-width: 699px) {
+  .home-hero-facts { gap: 12px 14px; }
+  .home-hero-facts li { gap: 7px; font-size: 13px; }
+  .home-hero-fact-icon { width: 28px; height: 28px; }
+}
+
+/*
+ * Testimonial slider, all screens (the track bleeds to the screen edge below 1100px so the next card peeks in)
+ *   phones  (<768px):    1 card + a peek of the next
+ *   tablets (768–1099px): 2 cards + a peek of the third
+ *   desktop (>=1100px):  3 cards; arrows on the sides from 1280px, below until then
+ */
+.testimonial-card { flex-basis: min(86%, 440px); scroll-snap-stop: always; }
+.testimonial-track { gap: 16px; margin: 0 -24px; padding: 10px 24px 22px; scroll-padding-inline: 24px; }
+@media (max-width: 599px) {
+  .testimonial-track { gap: 14px; margin: 0 -18px; padding: 10px 18px 20px; scroll-padding-inline: 18px; }
+  .testimonial-card { flex-basis: 86%; padding: 34px 20px 28px; }
+  .testimonial-card blockquote { font-size: 15px; line-height: 1.75; }
+  .testimonial-corner { width: 70px; height: 70px; padding: 13px 15px 0 0; }
+  .testimonial-card figcaption { padding: 0 34px; }
+  .testimonial-slider { padding-bottom: 60px; }
+}
+@media (min-width: 768px) and (max-width: 1099px) {
+  .testimonial-track { gap: 24px; }
+  .testimonial-card { flex-basis: 46%; scroll-snap-stop: normal; }
+}
+@media (min-width: 1100px) {
+  .testimonial-track { gap: 24px; margin: 0 -8px; padding: 10px 8px 22px; scroll-padding-inline: 8px; }
+  .testimonial-card { flex-basis: calc((100% - 48px) / 3); scroll-snap-stop: normal; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1023px) {
+  .home-section, .book-demo { padding: 80px 0; }
+  .home-hero { padding: 56px 0 72px; }
+  .home-hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .home-hero-visual { max-width: 460px; margin: 0 auto; }
+  .feature-grid, .course-tile-grid { grid-template-columns: repeat(2, 1fr); }
+  .feature-grid { row-gap: 60px; }
+  .book-demo-grid, .faq-grid { grid-template-columns: 1fr; gap: 40px; }
+  .book-demo-page { padding: 56px 0 80px; }
+}
+
+@media (max-width: 599px) {
+  .home-section, .book-demo { padding: 64px 0; }
+  .section-title { margin-bottom: 36px; }
+  .section-title p { font-size: 16px; }
+  .home-hero { padding: 44px 0 60px; }
+  .home-hero h1 { font-size: clamp(32px, 9vw, 42px); }
+  .home-hero-lead { font-size: 16px; }
+  .home-hero-actions .button { flex: 1 1 100%; }
+  /* Three facts in one row: icon above a short centred label */
+  .home-hero-facts { flex-wrap: nowrap; gap: 8px; margin-top: 30px; }
+  .home-hero-facts li { flex: 1 1 0; min-width: 0; flex-direction: column; gap: 8px; font-size: 13px; line-height: 1.35; text-align: center; }
+  .home-hero-visual { padding: 18px 12px 28px 16px; }
+  .hero-iqra-anchor { inset: 18px 12px 28px 16px; }
+  .hero-card { max-width: 184px; padding: 8px 12px 8px 8px; gap: 9px; border-radius: 15px; }
+  .hero-card strong { font-size: 13px; }
+  .hero-card small { margin-top: 1px; font-size: 12px; }
+  .hero-card-icon { width: 32px; height: 32px; border-radius: 10px; }
+  .hero-card-icon svg { width: 17px; height: 17px; }
+  .hero-card-yellow { top: 44px; }
+  .hero-card-course { bottom: 84px; left: 0; }
+  .hero-card-teal { bottom: 0; }
+  .hero-iqra { width: 56px; height: 56px; font-size: 21px; }
+  .feature-grid, .course-tile-grid { grid-template-columns: 1fr; gap: 18px; }
+  .feature-grid { row-gap: 56px; }
+  .course-tile-body { padding: 22px 22px 24px; }
+  .feature-card { padding: 54px 22px 28px; }
+  .book-demo-card { padding: 26px 18px; border-radius: 18px; }
+  .book-demo-page { padding: 44px 0 64px; }
+  .page-hero { padding: 48px 0 44px; }
+  .page-hero p { font-size: 16px; }
+  .faq-help { flex-direction: column; }
+  .accordion-button { padding: 18px 16px 18px 18px; font-size: 16px; }
+  .accordion-panel { padding: 0 18px 20px; }
+  .accordion-panel p { font-size: 15px; }
+}
+
+/* 3 Steps: stack into one column on narrower screens */
+@media (max-width: 859px) {
+  .step-list { grid-template-columns: 1fr; gap: 66px; max-width: 520px; margin: 0 auto; }
+  .step-item:not(:last-child)::before { display: none; }
+  /* dashed line runs down from one card to the next card's tab */
+  .step-item:not(:last-child)::after {
+    position: absolute; top: 100%; left: 50%; height: 32px; content: ""; border-left: 2px dashed rgba(14, 59, 49, .3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-card:hover { transform: none; }
+  .hero-card { animation: none; }
+}

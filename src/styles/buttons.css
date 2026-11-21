@@ -1,0 +1,42 @@
+/*
+ * Shared button styles (pill shaped).
+ *   .button-primary  yellow — main call to action
+ *   .button-light    alias of primary (used on dark banners)
+ *   .button-outline  green outline — secondary action on light backgrounds
+ *   .button-ghost    white outline — secondary action on dark backgrounds
+ *   .button-teal     teal — tertiary action / WhatsApp on dark
+ *   .button-sm       smaller size modifier
+ */
+
+.button {
+  min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  padding: 0 24px; border: 1.5px solid transparent; border-radius: var(--radius-pill);
+  font-size: 14px; font-weight: 700; letter-spacing: .01em; line-height: 1.25; text-align: center; cursor: pointer;
+  transition: background .2s, color .2s, transform .2s, border-color .2s, box-shadow .2s;
+}
+.button:hover { transform: translateY(-2px); }
+.button:active { transform: translateY(0); }
+.button svg { flex-shrink: 0; }
+
+.button-primary,
+.button-light { color: var(--green-deep); background: var(--gold); box-shadow: 0 8px 20px rgba(253, 185, 19, .28); }
+.button-primary:hover,
+.button-light:hover { background: var(--gold-hover); box-shadow: 0 12px 26px rgba(253, 185, 19, .36); }
+
+.button-outline { color: var(--green); background: transparent; border-color: rgba(14, 59, 49, .3); }
+.button-outline:hover { background: var(--green-soft); border-color: var(--green); }
+
+.button-ghost { color: #fff; background: transparent; border-color: rgba(255, 255, 255, .4); }
+.button-ghost:hover { background: rgba(255, 255, 255, .08); border-color: #fff; }
+
+.button-teal { color: #fff; background: var(--teal); }
+.button-teal:hover { background: #1b6b50; }
+
+.button-sm { min-height: 40px; padding: 0 18px; font-size: 13px; }
+.header-cta { white-space: nowrap; }
+
+/* Long labels wrap onto two lines instead of overflowing small screens */
+@media (max-width: 599px) {
+  .button { padding-top: 10px; padding-bottom: 10px; }
+}
+.button-arrow { font-size: 17px; line-height: 1; }
