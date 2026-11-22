@@ -1,0 +1,53 @@
+/*
+ * Design tokens — the HS Quran Online design system.
+ * Palette: deep emerald + warm cream, bright yellow accent, teal-green secondary.
+ * Change a value here and it updates across the whole site.
+ */
+
+:root {
+  /* Emerald greens */
+  --green: #0e3b31;          /* primary dark surface: header, hero, dark sections */
+  --green-deep: #082a23;     /* deepest surface: footer, top bar */
+  --green-mid: #1f7a5c;      /* teal text/links on light backgrounds (AA contrast) */
+  --teal: #22805f;           /* teal surfaces: secondary cards, buttons (white text ≥ 4.5:1) */
+  --green-soft: #e8f4ee;     /* pale green tint for chips and hovers */
+
+  /* Yellow accent */
+  --gold: #fdb913;           /* primary buttons, highlighted heading words, stars */
+  --gold-hover: #ffc93d;
+  --gold-ink: #9a6a00;       /* yellow-family text on light backgrounds (AA contrast) */
+  --gold-text: #b87d00;      /* highlighted words in large headings on light backgrounds */
+  --gold-soft: #fff4d6;
+
+  /* Neutrals */
+  --cream: #faf7f0;          /* warm cream section background */
+  --cream-deep: #f3ecdc;
+  --white: #fff;
+  --ink: #14332b;            /* body text on light backgrounds */
+  --muted: #5f7169;          /* secondary text */
+  --line: #e3e5da;           /* borders and dividers */
+  --on-dark: rgba(255, 255, 255, .86);
+  --on-dark-muted: rgba(255, 255, 255, .64);
+  --line-on-dark: rgba(255, 255, 255, .12);
+
+  /* Typography */
+  --serif: "Playfair Display", Georgia, serif;
+  --sans: "DM Sans", "Segoe UI", sans-serif;
+  --arabic: "Amiri", "Noto Naskh Arabic", "Traditional Arabic", serif;
+
+  /* Shape & depth */
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 2px 10px rgba(8, 42, 35, .06);
+  --shadow: 0 14px 34px rgba(8, 42, 35, .10);
+  --shadow-lg: 0 26px 60px rgba(8, 42, 35, .20);
+
+  /* Layout */
+  --container: 1160px;
+  --header-height: 76px;
+
+  /* Subtle Islamic geometric pattern (eight-point star lattice) for dark surfaces */
+  --pattern-on-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='88' viewBox='0 0 88 88'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.055' stroke-width='1'%3E%3Crect x='26' y='26' width='36' height='36'/%3E%3Crect x='26' y='26' width='36' height='36' transform='rotate(45 44 44)'/%3E%3Ccircle cx='44' cy='44' r='8'/%3E%3Cpath d='M0 0l26 26M88 0L62 26M0 88l26-26M88 88L62 62'/%3E%3C/g%3E%3C/svg%3E");
+}

@@ -1,0 +1,126 @@
+/* Site footer (shown on every page). */
+
+.site-footer {
+  position: relative; overflow: hidden; padding: 64px 0 24px;
+  color: var(--on-dark-muted);
+  background-color: var(--green-deep);
+  background-image: radial-gradient(circle at 12% 0%, rgba(47, 147, 115, .22), transparent 45%), var(--pattern-on-dark);
+}
+/* Gold gradient accent bar along the top */
+.site-footer::before {
+  position: absolute; top: 0; right: 0; left: 0; height: 4px; content: "";
+  background: linear-gradient(90deg, var(--gold), #ffe08a 50%, var(--gold));
+}
+/* Faint mosque-arch outline in the corner */
+.site-footer::after {
+  position: absolute; right: -30px; bottom: 0; width: 340px; height: 420px; content: ""; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='340' height='420' viewBox='0 0 340 420'%3E%3Cg fill='none' stroke='%23fdb913'%3E%3Cpath d='M20 420V180a150 150 0 0 1 300 0v240' stroke-opacity='.16' stroke-width='2'/%3E%3Cpath d='M52 420V184a118 118 0 0 1 236 0v236' stroke-opacity='.11' stroke-width='1.5'/%3E%3Cpath d='M84 420V188a86 86 0 0 1 172 0v232' stroke-opacity='.07' stroke-width='1.5'/%3E%3C/g%3E%3C/svg%3E") no-repeat right bottom / contain;
+}
+.footer-inner { position: relative; z-index: 1; }
+
+.footer-top {
+  display: grid; grid-template-columns: 1.4fr .8fr .9fr 1.4fr; gap: 40px;
+  padding-bottom: 44px; border-bottom: 1px solid var(--line-on-dark);
+}
+
+.footer-brand > p { max-width: 340px; margin: 18px 0 22px; font-size: 14px; line-height: 1.75; }
+.footer-brand-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.footer-column h2 {
+  margin: 6px 0 18px; color: #fff; font-family: var(--serif); font-size: 18px; font-weight: 600;
+}
+.footer-column h2::after { display: block; width: 28px; height: 2px; margin-top: 10px; content: ""; border-radius: 2px; background: var(--gold); }
+.footer-column ul { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; }
+
+/* Link lists: a gold arrow slides in on hover */
+.footer-links a {
+  min-height: 36px; display: inline-flex; align-items: center; color: var(--on-dark-muted); font-size: 14px;
+  transition: color .2s, transform .2s;
+}
+.footer-links a::before {
+  width: 0; margin-right: 0; overflow: hidden; content: "→"; color: var(--gold); opacity: 0;
+  transition: width .2s, margin .2s, opacity .2s;
+}
+.footer-links a:hover { color: var(--gold); }
+.footer-links a:hover::before { width: 16px; margin-right: 4px; opacity: 1; }
+
+/* Contact cards */
+.footer-contact ul { gap: 10px; }
+.footer-contact-card {
+  display: flex; align-items: center; gap: 13px; padding: 11px 14px;
+  border: 1px solid var(--line-on-dark); border-radius: 14px; background: rgba(255, 255, 255, .04);
+  overflow-wrap: anywhere; transition: border-color .2s, background .2s, transform .2s;
+}
+.footer-contact-card:hover { border-color: rgba(253, 185, 19, .65); background: rgba(255, 255, 255, .08); transform: translateY(-2px); }
+.footer-contact-icon {
+  width: 40px; height: 40px; flex-shrink: 0; display: grid; place-items: center; border-radius: 50%;
+  color: var(--gold); background: rgba(253, 185, 19, .14);
+}
+.footer-contact-whatsapp .footer-contact-icon { color: #fff; background: #25d366; }
+.footer-contact-text { min-width: 0; display: flex; flex-direction: column; color: #fff; font-size: 14px; font-weight: 600; line-height: 1.4; }
+.footer-contact-text small { color: var(--on-dark-muted); font-size: 12px; font-weight: 500; }
+
+/* Bottom bar */
+.footer-bottom {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px;
+  padding-top: 22px; font-size: 13px;
+}
+/* Leave room on the right so the floating WhatsApp button never covers the back-to-top button */
+@media (max-width: 1380px) { .footer-bottom { padding-right: 84px; } }
+.footer-legal-link { display: inline-block; padding: 9px 0; color: var(--on-dark); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; transition: color .2s; }
+.footer-legal-link:hover { color: var(--gold); }
+.footer-tagline { color: var(--gold); font-family: var(--serif); font-size: 15px; font-style: italic; }
+.footer-to-top {
+  width: 44px; height: 44px; display: grid; place-items: center; padding: 0; border: 0; border-radius: 50%;
+  color: var(--green-deep); background: var(--gold); cursor: pointer; box-shadow: 0 8px 18px rgba(0, 0, 0, .25);
+  transition: transform .2s, background .2s;
+}
+.footer-to-top:hover { background: var(--gold-hover); transform: translateY(-3px); }
+
+/*
+ * Tablets (768-1023px): brand row on top (text left, buttons right), then Explore | Quran Resources | Contact in 3 columns
+ * Small tablets & phones (<768px): brand, then two link columns, then contact cards
+ */
+@media (max-width: 1023px) {
+  .footer-top { grid-template-columns: .8fr .9fr 1.5fr; gap: 40px 32px; }
+  .footer-brand {
+    grid-column: 1 / -1; display: grid; grid-template-columns: 1fr auto; column-gap: 40px; align-items: center;
+  }
+  .footer-brand > .brand { grid-column: 1; }
+  .footer-brand > p { grid-column: 1; max-width: 520px; margin: 14px 0 0; }
+  .footer-brand-actions { grid-column: 2; grid-row: 1 / span 2; justify-content: flex-end; }
+  .footer-contact { grid-column: auto; }
+  .footer-contact ul { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 767px) {
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 34px 24px; }
+  .footer-brand { display: block; }
+  .footer-brand > p { max-width: 520px; margin: 16px 0 20px; }
+  .footer-brand-actions { justify-content: flex-start; }
+  .footer-contact { grid-column: 1 / -1; }
+  .footer-contact ul { gap: 8px; }
+  .footer-contact-card { gap: 12px; padding: 9px 12px; border-radius: 12px; }
+  .footer-contact-icon { width: 36px; height: 36px; }
+}
+
+@media (max-width: 599px) {
+  .site-footer { padding: 48px 0 20px; }
+  .footer-top { padding-bottom: 32px; }
+  .footer-column h2 { margin-bottom: 14px; font-size: 17px; }
+  .footer-column ul { gap: 0; }
+  .footer-links a { min-height: 36px; }
+  .footer-brand-actions .button { flex: 1 1 auto; }
+  /* Bottom bar: tagline on top, then copyright (left) and back-to-top (right) on one row */
+  .footer-bottom { flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; padding-top: 20px; text-align: left; }
+  .footer-tagline { order: 1; width: 100%; font-size: 16px; text-align: center; }
+  .footer-bottom > span:first-child { order: 2; flex: 1; min-width: 0; font-size: 12.5px; line-height: 1.55; }
+  .footer-to-top { order: 3; margin-right: 62px; }
+  /* The floating WhatsApp button sits there on phones, so only the back-to-top button moves aside */
+  .footer-bottom { padding-right: 0; }
+  .site-footer::after { width: 220px; height: 280px; right: -60px; opacity: .55; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-contact-card:hover, .footer-to-top:hover { transform: none; }
+}

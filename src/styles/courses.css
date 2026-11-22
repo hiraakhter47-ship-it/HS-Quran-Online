@@ -1,0 +1,125 @@
+/* Courses page (/courses). */
+
+/* ---------- Course photo (Courses page cards) ---------- */
+.course-photo { aspect-ratio: 16 / 10; overflow: hidden; margin-bottom: 24px; border-radius: var(--radius); background: var(--green-soft); }
+.course-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+.course-detail:hover .course-photo img { transform: scale(1.05); }
+
+/* ---------- Highlights strip (overlaps the page hero) ---------- */
+.course-highlights { position: relative; z-index: 2; margin-top: -36px; background: linear-gradient(transparent 36px, var(--cream) 36px); }
+.course-highlights + .courses-catalog { padding-top: 72px; }
+.course-highlights-list {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 0; padding: 14px;
+  list-style: none; border: 1px solid var(--line); border-radius: var(--radius-lg); background: #fff; box-shadow: var(--shadow);
+}
+.course-highlights-list li { display: flex; align-items: center; gap: 14px; padding: 12px 14px; }
+.course-highlight-icon { width: 48px; height: 48px; flex-shrink: 0; display: grid; place-items: center; border-radius: 14px; color: var(--green); background: var(--gold-soft); }
+.course-highlights-list strong { display: block; color: var(--green); font-size: 16px; }
+.course-highlights-list small { display: block; color: var(--muted); font-size: 13px; line-height: 1.4; }
+
+/* ---------- Jump links ---------- */
+.course-jump { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: -12px auto 44px; max-width: 900px; }
+.course-jump a {
+  min-height: 40px; display: inline-flex; align-items: center; padding: 0 16px;
+  border: 1px solid var(--line); border-radius: var(--radius-pill); color: var(--green); background: #fff;
+  font-size: 14px; font-weight: 600; transition: border-color .2s, background .2s;
+}
+.course-jump a:hover { border-color: var(--gold); background: var(--gold-soft); }
+
+/* ---------- Detailed course cards ---------- */
+.course-detail-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+.course-detail {
+  display: flex; flex-direction: column; padding: 34px 32px 32px;
+  border: 1px solid var(--line); border-radius: var(--radius-lg); background: #fff; box-shadow: var(--shadow-sm);
+  transition: box-shadow .25s, border-color .25s;
+}
+.course-detail:hover, .course-detail:target { border-color: rgba(253, 185, 19, .7); box-shadow: var(--shadow); }
+.course-detail-head { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+.course-detail-icon { width: 64px; height: 64px; flex-shrink: 0; display: grid; place-items: center; border-radius: 18px; color: var(--gold); background: var(--green); }
+.course-detail-number::before { content: attr(data-number); }
+.course-detail-number { flex-shrink: 0; color: var(--gold-text); font-family: var(--serif); font-size: 44px; font-weight: 700; line-height: 1; }
+.course-detail h2 { flex: 1; min-width: 0; overflow-wrap: break-word; margin: 0; color: var(--green); font-family: var(--serif); font-size: 26px; font-weight: 600; line-height: 1.25; }
+.course-detail-summary { margin: 0 0 20px; color: var(--muted); font-size: 16px; line-height: 1.7; }
+
+.course-detail-audience { margin: 0 0 22px; color: var(--ink); font-size: 15px; line-height: 1.6; }
+.course-detail-audience strong { color: var(--green); }
+.course-detail-outcomes-title { margin: 0 0 12px; color: var(--green); font-size: 16px; font-weight: 700; }
+.course-detail-outcomes { display: grid; gap: 10px; margin: 0 0 28px; padding: 0; list-style: none; }
+.course-detail-outcomes li { display: flex; align-items: flex-start; gap: 10px; color: var(--ink); font-size: 15px; line-height: 1.5; }
+.course-detail-outcomes li > span { width: 22px; height: 22px; flex-shrink: 0; display: grid; place-items: center; margin-top: 1px; border-radius: 50%; color: var(--green-deep); background: var(--gold); }
+.course-detail-cta { align-self: flex-start; margin-top: auto; }
+
+
+/* ---------- Free Quran resources ---------- */
+.resource-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.resource-card {
+  display: flex; align-items: center; gap: 18px; padding: 26px 24px;
+  border: 1px solid var(--line); border-radius: var(--radius-lg); background: #fff;
+  transition: transform .25s, box-shadow .25s, border-color .25s;
+}
+.resource-card:hover { transform: translateY(-3px); border-color: rgba(253, 185, 19, .7); box-shadow: var(--shadow); }
+.resource-icon { width: 56px; height: 56px; flex-shrink: 0; display: grid; place-items: center; border-radius: 16px; color: var(--green); background: var(--gold-soft); }
+.resource-copy { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.resource-copy strong { color: var(--green); font-family: var(--serif); font-size: 20px; }
+.resource-copy span { margin-top: 4px; color: var(--muted); font-size: 14px; line-height: 1.55; }
+.resource-arrow { flex-shrink: 0; color: var(--green-mid); transition: transform .2s; }
+.resource-card:hover .resource-arrow { transform: translateX(4px); }
+
+/* ---------- Responsive ---------- */
+/*
+ * Tablets (768-1023px): highlights 2x2, course cards in 2 columns
+ * Small tablets (600-767px): course cards in 1 column with a wide, shorter photo
+ * Phones (<600px): highlights as a compact 2x2 grid, course links as one swipeable row
+ */
+@media (max-width: 1023px) {
+  .course-highlights-list { grid-template-columns: repeat(2, 1fr); }
+  .course-detail-grid { gap: 24px; }
+  .course-detail { padding: 28px 24px 26px; }
+  .course-detail-icon { width: 56px; height: 56px; border-radius: 16px; }
+  .course-detail h2 { font-size: 22px; }
+  .course-detail-number { font-size: 36px; }
+  .resource-grid { grid-template-columns: 1fr; max-width: 760px; margin: 0 auto; }
+}
+
+@media (max-width: 767px) {
+  .course-detail-grid { grid-template-columns: 1fr; max-width: 640px; margin: 0 auto; }
+  .course-photo { aspect-ratio: 2 / 1; }
+}
+
+@media (max-width: 599px) {
+  .course-highlights { margin-top: -28px; background: linear-gradient(transparent 28px, var(--cream) 28px); }
+  .course-highlights + .courses-catalog { padding-top: 52px; }
+  .course-highlights-list { grid-template-columns: 1fr 1fr; gap: 8px; padding: 8px; }
+  .course-highlights-list li { gap: 10px; padding: 12px 10px; border-radius: 14px; background: var(--cream); }
+  .course-highlight-icon { width: 38px; height: 38px; border-radius: 11px; }
+  .course-highlight-icon svg { width: 20px; height: 20px; }
+  .course-highlights-list strong { font-size: 14px; line-height: 1.3; }
+  .course-highlights-list small { display: none; }
+
+  /* Course links: one row that scrolls sideways (no scrollbar) instead of five wrapped rows */
+  .course-jump {
+    flex-wrap: nowrap; justify-content: flex-start; gap: 8px; max-width: none; margin: -12px -18px 28px; padding: 4px 18px 8px;
+    overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  }
+  .course-jump::-webkit-scrollbar { display: none; }
+  .course-jump a { flex-shrink: 0; white-space: nowrap; }
+
+  .course-photo { aspect-ratio: 16 / 9; margin-bottom: 20px; }
+  .course-detail { padding: 24px 20px 24px; }
+  .course-detail-head { gap: 12px; }
+  .course-detail-icon { width: 54px; height: 54px; border-radius: 16px; }
+  .course-detail h2 { font-size: 21px; }
+  .course-detail-number { font-size: 32px; }
+  .course-detail-cta { align-self: stretch; }
+  .resource-card { padding: 20px 18px; gap: 14px; }
+}
+
+/* Very narrow phones: keep icon + title + number on one row without overflowing */
+@media (max-width: 380px) {
+  .course-detail-head { gap: 10px; }
+  .course-detail-icon { width: 46px; height: 46px; border-radius: 14px; }
+  .course-detail-icon svg { width: 24px; height: 24px; }
+  .course-detail h2 { font-size: 19px; }
+  .course-detail-number { font-size: 26px; }
+  .course-highlights-list li { gap: 8px; padding: 10px 8px; }
+}
