@@ -1,9 +1,8 @@
-import { ArrowRight, Menu, Phone, X } from 'lucide-react'
+import { ArrowRight, Menu, X } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router'
 import { BOOK_DEMO_LINK, NAV_ITEMS } from '../../app/routes.js'
 import { site } from '../../config/site.js'
-import CountryFlag from '../ui/CountryFlag.jsx'
 import WhatsAppIcon from '../ui/WhatsAppIcon.jsx'
 import BrandLogo from './BrandLogo.jsx'
 
@@ -78,11 +77,6 @@ function Header() {
         </nav>
 
         <div className="header-actions">
-          <a className="header-phone" href={site.usPhone.href} aria-label={`Call our USA number ${site.usPhone.display}`}>
-            <Phone className="header-phone-icon" size={19} aria-hidden="true" />
-            <CountryFlag code="US" />
-            <span className="header-phone-text">{site.usPhone.display}</span>
-          </a>
           <Link className="button button-primary header-cta" to={BOOK_DEMO_LINK}>
             Book a Free Demo <ArrowRight size={18} aria-hidden="true" />
           </Link>

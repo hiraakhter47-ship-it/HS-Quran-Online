@@ -52,29 +52,6 @@ main:focus { outline: none; }
 .mobile-menu-actions { display: none; }
 
 .header-actions { display: flex; align-items: center; gap: 12px; }
-/*
- * USA number before the Book a Free Demo button.
- *   phones & small tablets (<820px): round call button with a small flag badge
- *   tablets (820-1023): flag + number
- *   1024-1179px:       hidden (the nav needs the room)
- *   desktop (>=1180px): flag + number
- */
-.header-phone {
-  position: relative; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
-  width: 44px; height: 44px; padding: 0; border: 1px solid var(--line-on-dark); border-radius: 50%;
-  color: #fff; background: rgba(255, 255, 255, .04); transition: color .2s, background .2s, border-color .2s;
-}
-.header-phone:hover { color: var(--gold); background: rgba(255, 255, 255, .1); border-color: rgba(255, 255, 255, .25); }
-.header-phone .country-flag { position: absolute; right: -5px; bottom: -4px; width: 21px; border: 1.5px solid var(--green); border-radius: 4px; box-shadow: none; background: var(--green); }
-.header-phone-text { display: none; }
-@media (min-width: 820px) {
-  .header-phone { width: auto; height: auto; gap: 9px; padding: 8px 6px; border: 0; border-radius: 0; background: none; font-size: 14px; font-weight: 600; white-space: nowrap; }
-  .header-phone:hover { background: none; }
-  .header-phone-icon { display: none; }
-  .header-phone-text { display: inline; }
-  .header-phone .country-flag { position: static; width: 26px; border: 0; border-radius: 3px; background: none; box-shadow: 0 0 0 1px rgba(255, 255, 255, .25); }
-}
-@media (min-width: 1024px) and (max-width: 1179px) { .header-phone { display: none; } }
 .menu-toggle {
   display: none; width: 44px; height: 44px; place-items: center; padding: 0;
   border: 1px solid var(--line-on-dark); border-radius: 12px;
@@ -110,28 +87,21 @@ main:focus { outline: none; }
   .mobile-menu-actions .button { width: 100%; }
 }
 
-/* The Book a Free Demo button is in the menu on narrow screens */
-@media (max-width: 699px) {
-  .header-actions .header-cta { display: none; }
-}
-
+/* The Book a Free Demo button is in the menu on phones */
 @media (max-width: 599px) {
-  .brand-copy span { letter-spacing: .06em; }
+  .header-actions .header-cta { display: none; }
 }
 
 @media (max-width: 380px) {
   .header-inner { gap: 12px; }
   .brand { gap: 10px; }
   .brand-copy strong { font-size: 17px; }
-  .brand-copy span { font-size: 9.5px; letter-spacing: .05em; }
+  .brand-copy span { font-size: 10px; letter-spacing: .1em; }
 }
 
 /* Very narrow phones: the tagline doesn't fit beside the menu button */
 @media (max-width: 359px) {
   .brand-copy span { display: none; }
-  .header-inner { gap: 8px; }
-  .header-actions { gap: 8px; }
-  .menu-toggle, .header-phone { width: 40px; height: 40px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

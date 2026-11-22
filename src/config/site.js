@@ -10,16 +10,10 @@ export const site = {
     'One-to-one online Quran classes for children and adults — learn to read, recite and understand the Quran from home.',
   defaultTitle: 'HS Quran Online | Learn Quran with Confidence',
 
-  email: 'hiraakhter47@gmail.com',
+  email: 'contact@hsquranonline.com',
   phone: {
     display: '+92 336 8277776',
     href: 'tel:+923368277776',
-  },
-  // TODO: PLACEHOLDER — replace with the real USA number after the client meeting.
-  // (555-01xx numbers are reserved for fiction, so this can never ring a real person.)
-  usPhone: {
-    display: '+1 (555) 010-0100',
-    href: 'tel:+15550100100',
   },
   whatsapp: {
     display: '+92 336 8277776',
